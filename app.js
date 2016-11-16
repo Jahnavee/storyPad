@@ -7,9 +7,15 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+//add reference to the new stories controller
+var stories = require('./routes/stories');
 
 var app = express();
 
+// using mongoose to connect  mongodb
+var mongoose= require('mongoose');
+var config = require('./config/globalVars');
+mongoose.connect(config.db);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -24,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-
+//let know application to use stories controller for urls
+app.use('/stories',stories);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
