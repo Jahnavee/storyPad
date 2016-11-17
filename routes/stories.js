@@ -52,5 +52,34 @@ router.post('/add',function (req,res,next) {
         }
     });
 });
+
+//GET/stories/delete/id
+router.get('/delete/:_id/',function (req,res,next) {
+    //get id from url
+    var _id = req.params._id;
+
+//    delete with _id
+    Story.remove({_id: _id},function (err) {
+        if(err)
+        {
+            console.log(err);
+            res.render('error',{
+                message:'Could not delete the story',
+                error: err
+            });
+        }
+        else
+        {
+            res.redirect('/stories');
+        }
+    });
+
+});
+//GET stories _id for editing page
+router.get('/:_id',function (req,res,next) {
+    res.render('edit-story',{
+        title:'Story Editing'
+    });
+});
 //maing it public
 module.exports = router;

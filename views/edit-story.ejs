@@ -1,0 +1,27 @@
+<% include partials/header.ejs %>
+<h1>Create your own story</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name:</label>
+        <input name="name" id="name" required />
+    </div>
+    <div class="form-group">
+        <label for="storyType" class="col-sm-2 control-label">Type:</label>
+        <select name="storyType" id="storyType">
+            <option>Fiction</option>
+            <option>Non-Fiction</option>
+            <option>Action</option>
+            <option>Mystery/Thriller</option>
+            <option>Random</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="storyWrite">Story:</label>
+        <input name="storyWrite" id="storyWrite" required type="text" />
+        <!--<textarea class="form-control" rows="5" id="storyWrite"  ></textarea>-->
+    </div>
+    <button class="btn btn-success col-sm-offset-2">Save</button>
+</form>
+
+<% include partials/footer.ejs %>
