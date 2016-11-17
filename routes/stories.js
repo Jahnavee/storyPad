@@ -10,7 +10,7 @@ var Story = require('../models/story');
 router.get('/',function (req,res,next) {
     // use story model query database 
     Story.find(function (err,stories) {
-        // if error occurs the link it to error.ejs
+        // if error occurs then link it to error.ejs
        if(err)
        {
            console.log(err);
@@ -21,7 +21,8 @@ router.get('/',function (req,res,next) {
            //else load the story page and pass the query
            res.render('stories',
                {
-                   title: 'StoryPad: Community for reader and writter'
+                   title: 'StoryPad: Community for reader and writter',
+                   stories: stories
                });
        }
     });
