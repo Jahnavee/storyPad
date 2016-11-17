@@ -13,7 +13,8 @@ router.get('/',function (req,res,next) {
         // if error occurs the link it to error.ejs
        if(err)
        {
-           console.log(err)
+           console.log(err);
+           res.render('error');
        }
        else
        {
@@ -27,5 +28,28 @@ router.get('/',function (req,res,next) {
 
 });
 
+// GET /stories/ add to show form
+router.get('/add',function (req,res, next) {
+    res.render('add-story',{title: 'Add Your Story '});
+});
+
+//POST/stories/add - form subbmisson
+router.post('/add',function (req,res,next) {
+    Story.create ({
+        name: req.body.name,
+        storyType: req.body.storyType,
+        storyWrite: req.body.storyWrite
+    },function (err, Story) {
+        if(err)
+        {
+            console.log(err);
+            res.render('error',{message:'sorry, could not add story'});
+        }
+        else
+        {
+            res.redirect('/stories');
+        }
+    });
+});
 //maing it public
 module.exports = router;

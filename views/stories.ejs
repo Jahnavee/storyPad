@@ -1,4 +1,23 @@
-<%include partials/header.ejs%>
+
 
 <h1><%= title %></h1>
-<%include partials/footer.ejs%>
+<a href="/stories/add">Add Your Story</a>
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Stories</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <% for (var i=0; i < stories.length; i++) { %>
+    <tr>
+        <td><%= stories[i].name %></td>
+        <td><%= stories[i].storyType %></td>
+        <td><%= stories[i].storyWrite %></td>
+        <td><a href="/stories/<%= stories[i]._id %>">Edit</a></td>
+        <td><a href="/stories/delete/<%= stories[i]._id %>" class="confirmation">Delete</a></td>
+    </tr>
+    <% } %>
+</table>
+<% include partials/footer.ejs %>

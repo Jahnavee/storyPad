@@ -2,6 +2,10 @@
  * Created by Sony on 11/15/2016.
  */
 //Defining Schema for story model
+
+var mongoose = require('mongoose');
+
+
 var storySchema = new mongoose.Schema
 ({
     name: {
