@@ -77,8 +77,56 @@ router.get('/delete/:_id/',function (req,res,next) {
 });
 //GET stories _id for editing page
 router.get('/:_id',function (req,res,next) {
-    res.render('edit-story',{
-        title:'Story Editing'
+    //get id
+    var _id =  req.params._id;
+
+    //use mongoose
+    Story.findById({ _id: _id},function (err,story) {
+       if(err)
+       {
+           console.log(err);
+           res.render('error',{
+               message: 'could not load page',
+               error: err
+           });
+       }
+       else
+       {
+           res.render('edit-story',{
+               title: 'Edit your Story',
+               story: story
+           });
+       }
+    });
+
+});
+//POST/stories/_id
+router.post('/:_id',function (req,res,next) {
+   //get id
+    var _id = req.params._id;
+
+    //instantiate and populate the new story
+    var story = new Story({
+        _id: _id,
+        name: req.body.name,
+        storyType: req.body.storyType,
+        storyWrite: req.body.storyWrite
+    });
+
+    //update the drink
+    Story.update({_id: _id}, story, function (err) {
+       if(err)
+       {
+           console.log(err);
+           res.render('error',{
+               message:'Could not update',
+               error: err
+           });
+       } 
+       else
+       {
+           res.redirect('/stories');
+       }
     });
 });
 //maing it public
