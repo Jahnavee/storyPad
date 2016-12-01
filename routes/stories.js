@@ -33,7 +33,7 @@ router.get('/',isLoggedIn, function (req,res,next) {
            //else load the story page and pass the query
            res.render('stories',
                {
-                   title: 'StoryPad: Community for reader and writter',
+                   title: 'StoryPad: Community for reader',
                    stories: stories,
                    user: req.user
                });
