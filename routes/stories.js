@@ -1,13 +1,25 @@
 /**
  * Created by Sony on 11/15/2016.
  */
+
 var express = require('express');
 var router = express.Router();
 
 //linking to story model
 var Story = require('../models/story');
+//auth check
+function  isLoggedIn(req, res, next) {
+    if(req.isAuthenticated())
+    {
+        next();
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+}
 //GET story page
-router.get('/',function (req,res,next) {
+router.get('/',isLoggedIn, function (req,res,next) {
     // use story model query database 
     Story.find(function (err,stories) {
         // if error occurs then link it to error.ejs
@@ -22,7 +34,8 @@ router.get('/',function (req,res,next) {
            res.render('stories',
                {
                    title: 'StoryPad: Community for reader and writter',
-                   stories: stories
+                   stories: stories,
+                   user: req.user
                });
        }
     });
@@ -30,12 +43,14 @@ router.get('/',function (req,res,next) {
 });
 
 // GET /stories/ add to show form
-router.get('/add',function (req,res, next) {
-    res.render('add-story',{title: 'Add Your Story '});
+router.get('/add',isLoggedIn,function (req,res, next) {
+    res.render('add-story',{title: 'Add Your Story ',
+        user: req.user
+    });
 });
 
 //POST/stories/add - form subbmisson
-router.post('/add',function (req,res,next) {
+router.post('/add',isLoggedIn,function (req,res,next) {
     Story.create ({
         name: req.body.name,
         storyType: req.body.storyType,
@@ -54,7 +69,7 @@ router.post('/add',function (req,res,next) {
 });
 
 //GET/stories/delete/id
-router.get('/delete/:_id/',function (req,res,next) {
+router.get('/delete/:_id/',isLoggedIn,function (req,res,next) {
     //get id from url
     var _id = req.params._id;
 
@@ -76,7 +91,7 @@ router.get('/delete/:_id/',function (req,res,next) {
 
 });
 //GET stories _id for editing page
-router.get('/:_id',function (req,res,next) {
+router.get('/:_id',isLoggedIn,function (req,res,next) {
     //get id
     var _id =  req.params._id;
 
@@ -94,7 +109,8 @@ router.get('/:_id',function (req,res,next) {
        {
            res.render('edit-story',{
                title: 'Edit your Story',
-               story: story
+               story: story,
+               user: req.user
            });
        }
     });
@@ -113,7 +129,7 @@ router.post('/:_id',function (req,res,next) {
         storyWrite: req.body.storyWrite
     });
 
-    //update the drink
+    //update the page
     Story.update({_id: _id}, story, function (err) {
        if(err)
        {
@@ -122,7 +138,7 @@ router.post('/:_id',function (req,res,next) {
                message:'Could not update',
                error: err
            });
-       } 
+       }
        else
        {
            res.redirect('/stories');
