@@ -5,3 +5,18 @@
 $('.confirmation').on('click',function () {
     return confirm('Are you sure you want to delete? ');
 });
+
+//password to check register form
+var validator = $('#registerForm').validate({
+   rules:{
+       confirm:{
+           required: true,
+           equalTo:'#password'
+       }
+   },
+    messages:{
+       confirm:{
+           equalTo: 'Your Password do not match'
+       }
+    }
+});
