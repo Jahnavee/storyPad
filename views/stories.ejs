@@ -1,6 +1,7 @@
 <% include partials/header.ejs %>
+<div class="container story">
 <h1><%= title %></h1>
-<a href="/stories/add">Add Your Story</a>
+
 <table class="table table-striped">
     <tr>
         <th>Name</th>
@@ -20,4 +21,6 @@
     </tr>
     <% } %>
 </table>
+    <a class="story-btn" href="/stories/add">Add Your Story</a>
+    </div>
 <% include partials/footer.ejs %>

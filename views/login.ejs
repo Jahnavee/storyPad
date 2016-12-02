@@ -1,12 +1,12 @@
 <% include partials/header.ejs %>
 
-<main class="container">
+<main class="container story">
     <h1>Login</h1>
     <% if (messages.length > 0) { %>
-    <div class="alert alert-danger"><%= messages %></div>
+    <h2><%= messages %></h2>
     <% }
     else { %>
-    <div class="alert alert-success">Please enter your Username and Password</div>
+    <h2>Please enter your Username and Password</h2>
     <% } %>
     <form method="post">
         <div class="form-group">

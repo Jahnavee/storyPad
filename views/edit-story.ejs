@@ -1,4 +1,6 @@
 <% include partials/header.ejs %>
+
+<div class="container">
 <h1>Create your own story</h1>
 
 <form method="post">
@@ -32,11 +34,11 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="storyWrite">Story:</label>
+        <label for="storyWrite" class="col-sm-2 control-label">Story:</label>
         <input name="storyWrite" id="storyWrite" required  value="<%=story.storyWrite %>" />
         <!--<textarea class="form-control" rows="5" id="storyWrite"  ></textarea>-->
     </div>
     <button class="btn btn-success col-sm-offset-2">Save</button>
 </form>
-
+</div>
 <% include partials/footer.ejs %>

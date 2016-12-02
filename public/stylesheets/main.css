@@ -1,0 +1,75 @@
+nav.navbar.top-nav {
+    background-color: #333;
+    border-radius: 0px;
+}
+
+nav.navbar.top-nav a {
+    color: #fff;
+}
+
+nav.navbar.top-nav a:hover {
+    background-color: gray;
+}
+.story h1 {
+    font-size: 25px;
+    margin: 26px 0px 10px;
+    font-weight: 600;
+}
+.story h2 {
+    font-size: 14px;
+    margin: 0px 0px 30px;
+}
+.container.story.home h1 {
+    font-size: 46px;
+    font-weight: 300;
+    color: #333;
+}
+a.logo {
+    font-size: 24px;
+    margin-right: 55px;
+    margin-left: 0px;
+    color: #67E6EC !important;
+}
+a.logo:hover {
+    font-size: 24px;
+    margin-right: 55px;
+    margin-left: 0px;
+    color: #67E6EC !important;
+    background-color: transparent !important;
+}
+.container.story.home p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #333;
+    margin: 0px;
+}
+.container.story.home {
+    text-align: center;
+    padding: 50px 0px;
+    background-color: #f8f8f8;
+    border: solid 1px #ccc;
+    margin: 80px auto;
+}
+footer.foo {
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+.story table {
+    border: solid 1px #ccc;
+}
+.story a.story-btn {
+    background-color: #0198E1;
+    color: #fff;
+    border-radius: 3px;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 20px;
+}
