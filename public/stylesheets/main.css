@@ -19,6 +19,9 @@ nav.navbar.top-nav a:hover {
     font-size: 14px;
     margin: 0px 0px 30px;
 }
+.username{
+    color: white;
+}
 .container.story.home h1 {
     font-size: 46px;
     font-weight: 300;
@@ -50,6 +53,11 @@ a.logo:hover {
     border: solid 1px #ccc;
     margin: 80px auto;
 }
+/*.navbar-text {*/
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+    /*color: wheat;*/
+/*}*/
 footer.foo {
     margin: 0;
     position: fixed;

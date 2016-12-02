@@ -17,14 +17,14 @@
         <li><a href="/">Home</a></li>
 <% if (!user){%>
         <li><a href="/register">Register</a> </li>
-        <li><a href="/login">login</a> </li>
+        <li><a href="/login">Login</a> </li>
         <% }
         else{
         %>
         <li><a href="/stories">Stories</a></li>
         <li><a href="/logout">logout</a> </li>
 
-        <div class="navbar-text pull-right">
+        <div class="navbar-text pull-right username">
             Welcome <%= user.username %>
         </div>
         <% } %>

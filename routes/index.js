@@ -14,7 +14,7 @@ var flash = require('connect-flash');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'StoryPad: Community for reader',
+  res.render('index', { title: 'StoryPad: Community for Reader',
   message: 'Storypad- where you can save your novels and books',
   user: req.user
   });
